@@ -1,4 +1,4 @@
-import java.util.Stack;
+
 
 class Solution {
     public int largestRectangleArea(int[] heights) {
@@ -6,7 +6,7 @@ class Solution {
         int ans = 0;
         int n = heights.length;
 
-        Stack<Integer> st = new Stack<>();
+        Stack<Integer> st = new Stack();
 
         for (int i = 0; i < n; i++) {
 
