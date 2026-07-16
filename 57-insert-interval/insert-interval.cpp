@@ -1,17 +1,29 @@
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& a, vector<int>& newInterval) {
-        a.push_back(newInterval);
-        sort(a.begin(),a.end());
+        vector<vector<int>> temp;
         int n=a.size();
-        int start=a[0][0];
-        int end=a[0][1];
+        
+        bool insert = false;
+        for(int i=0;i<n;i++){
+          if(!insert and a[i][0]>=newInterval[0]){
+            temp.push_back(newInterval);
+            insert=true;
+          } 
+          temp.push_back(a[i]);
+        }
+
+        if(!insert){
+            temp.push_back(newInterval);
+        }
         
         vector<vector<int>> res;
+        int start=temp[0][0];
+        int end=temp[0][1];
 
-        for(int i=1;i<n;i++){
-            int s=a[i][0];
-            int e=a[i][1];
+        for(int i=1;i<temp.size();i++){
+            int s=temp[i][0];
+            int e=temp[i][1];
 
             if(end>=s){
                 
